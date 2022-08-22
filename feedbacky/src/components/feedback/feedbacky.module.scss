@@ -1,0 +1,18 @@
+.button {
+    width:60px;
+    height:60px;
+    border-radius: 50%;
+    background-color: #4B4B67;
+    border: none;
+    position: fixed;
+    padding: 15px;
+    box-shadow: 0 0 20px rgb(75, 75, 103, 0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    right: 20px;
+    bottom: 20px;
+    img {
+        width:100%;
+    }
+}
