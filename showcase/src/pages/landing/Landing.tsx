@@ -1,4 +1,3 @@
-import Header from '../../common/components/header/Header';
 import Button from '../../common/components/button/Button';
 import Slogan from './components/slogan/Slogan';
 import Showcase from './components/showcase/Showcase';
