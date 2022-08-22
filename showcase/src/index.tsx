@@ -9,6 +9,10 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import GettingStarted from './pages/gettingStarted/GettingStarted';
+import Header from './common/components/header/Header';
+import Register from './pages/register/Register';
+import Login from './pages/login/Login';
 
 
 const root = ReactDOM.createRoot(
@@ -18,9 +22,16 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+    <main className="main">
+      <Header />
       <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path="/getting-started" element={<GettingStarted />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        
       </Routes>
+    </main>
     </BrowserRouter>
   </React.StrictMode>
 );
