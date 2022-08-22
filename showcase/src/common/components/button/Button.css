@@ -1,0 +1,28 @@
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 20px;
+    line-height: 32px;
+    letter-spacing: -0.01em;
+    font-weight: 500;
+    min-height: 52px;
+    padding: 10px 32px;
+    background-color: #4B4B65;
+    color: #ffffff;
+    pointer-events: unset;
+    text-align: center;
+    min-width: 220px;
+    font-weight: 500;
+    -webkit-appereance: none;
+    border: none;
+}
+
+.button:hover {
+    background-color: #f6ca6c;
+    color: #080f1a;
+}
