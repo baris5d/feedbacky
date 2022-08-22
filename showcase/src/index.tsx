@@ -13,6 +13,7 @@ import GettingStarted from './pages/gettingStarted/GettingStarted';
 import Header from './common/components/header/Header';
 import Register from './pages/register/Register';
 import Login from './pages/login/Login';
+import Applications from './pages/applications/Applications';
 
 
 const root = ReactDOM.createRoot(
@@ -29,6 +30,8 @@ root.render(
         <Route path="/getting-started" element={<GettingStarted />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+
+        <Route path="/applications" element={<Applications />} />
         
       </Routes>
     </main>
