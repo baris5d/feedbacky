@@ -94,3 +94,65 @@ code {
   padding: 9px 14px;
   border-color: #4C4B63;
 }
+
+.table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0 0 15px;
+}
+
+.table__header {
+  display: table-header-group;
+  background: #f5f5f5;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 15px;
+  font-weight: 500;
+}
+
+.table__row {
+  display: table-row;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 15px;
+}
+
+.table__row:last-child {
+  border-bottom: none;
+}
+
+.table__cell {
+  display: table-cell;
+  text-align: left;
+  padding: 10px 15px;
+}
+
+.table__cell:first-child {
+  border-left: 1px solid #ccc;
+}
+
+.table__cell:last-child {
+  border-right: 1px solid #ccc;
+}
+
+.table__header-cell {
+  display: table-cell;
+  text-align: left;
+  padding: 10px 15px;
+}
+
+.table__header-cell:first-child {
+  border-left: 1px solid #ccc;
+}
+
+.table__header-cell:last-child {
+  border-right: 1px solid #ccc;
+}
+
+.table__body {
+  display: table-row-group;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 15px;
+}
