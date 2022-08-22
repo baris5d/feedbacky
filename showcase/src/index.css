@@ -21,3 +21,76 @@ code {
   margin: 0 auto;
   padding: 0 20px;
 }
+
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 4px;
+  margin: 0 auto;
+  padding: 20px 0;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal__header {
+  padding: 0 20px;
+  width: 100%;
+  margin: 0 0 20px;
+}
+
+.modal__title {
+  text-align: left;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.modal__body {
+  position: relative;
+  width: 100%;
+  padding: 0 20px;
+  margin: 0 0 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__footer {
+  margin: 20px 0 0;
+  padding: 0 20px;
+}
+
+.modal__footer p {
+  margin: 0;
+  text-align: center;
+  color: #222;
+}
+
+.modal__footer a {
+  color: #4B4B63;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.modal__footer a:hover {
+  text-decoration: underline;
+}
+
+.form {
+  position: relative;
+}
+
+.form__input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0 0 15px;
+}
+
+.form__input:focus {
+  outline: none;
+  border-width: 2px;
+  padding: 9px 14px;
+  border-color: #4C4B63;
+}
