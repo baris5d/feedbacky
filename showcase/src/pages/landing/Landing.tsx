@@ -7,11 +7,10 @@ import './Landing.css';
 function Landing() {
   return (
     <div className="page landing">
-      <Header />
       <div className="container">
         <Slogan />
         <div style={{textAlign: 'center'}}>
-          <Button text="Get started" url="/docs" />
+          <Button text="Get started" url="/getting-started" />
         </div>
         <Showcase />
       </div>

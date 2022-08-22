@@ -17,7 +17,7 @@ const Header = () => {
                             <Link to="/login">Login</Link>
                         </li>
                         <li className="header__menu-item">
-                            <Link to="/get-started">Get Started</Link>
+                            <Link to="/getting-started">Get Started</Link>
                         </li>
                     </ul>
                 </div>
