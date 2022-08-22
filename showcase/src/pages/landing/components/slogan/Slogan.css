@@ -1,0 +1,17 @@
+.slogan {
+    text-align: center;
+}
+
+.slogan__content {
+    padding: 60px 0 30px;
+}
+
+.slogan__title {
+    color: #080f1a;
+    font-weight: 500;
+    white-space: pre-line;
+    font-size: 40px;
+    letter-spacing: -0.03em;
+    margin-top: 0;
+    font-weight: 500;
+}
