@@ -8,11 +8,11 @@ const Register = () => {
         password: '',
     })
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUser({ ...user, [e.target.name]: e.target.value })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         console.log(user)
     }
@@ -27,7 +27,7 @@ const Register = () => {
                     }}
                 >
                     <form
-                        class="form"
+                        className="form"
                         id="register-form"
                         onSubmit={handleSubmit}
                     >
