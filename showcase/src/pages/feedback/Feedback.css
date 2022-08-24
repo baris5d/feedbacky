@@ -1,0 +1,17 @@
+.feedback__details-item {
+    margin-bottom: 20px;
+}
+
+.feedback__details-item-label {
+    font-size: 0.875rem;
+    color: #222;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.feedback__details-item-value {
+    font-size: 1rem;
+    color: #333;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
