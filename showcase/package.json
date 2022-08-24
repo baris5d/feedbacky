@@ -10,6 +10,8 @@
         "@types/node": "^16.11.51",
         "@types/react": "^18.0.17",
         "@types/react-dom": "^18.0.6",
+        "@types/ua-parser-js": "^0.7.36",
+        "moment": "^2.29.4",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-markdown": "^8.0.3",
@@ -17,10 +19,11 @@
         "react-scripts": "5.0.1",
         "react-type-animation": "^2.1.0",
         "typescript": "^4.7.4",
+        "ua-parser-js": "^1.0.2",
         "web-vitals": "^2.1.4"
     },
     "scripts": {
-        "start": "react-scripts start",
+        "start": "GENERATE_SOURCEMAP=false react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
