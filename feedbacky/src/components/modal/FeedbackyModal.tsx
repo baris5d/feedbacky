@@ -7,6 +7,8 @@ export interface ModalTypes extends Omit<FeedbackyProps, ''> {
     toggle: () => void
 }
 
+const BASE_URL = 'http://0.0.0.0:5001/api/v1/applications/1/feedbacks'
+
 const FeedbackyModal = (props: ModalTypes) => {
     const {
         toggle,
@@ -20,7 +22,21 @@ const FeedbackyModal = (props: ModalTypes) => {
     const [message, setMessage] = useState('')
 
     const submit = () => {
-        toggle()
+        fetch(BASE_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    content: message
+                }),
+                })
+            .then(() => {
+                setMessage('')
+                toggle()
+            }).catch(err => {
+                console.log(err)
+            })
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
