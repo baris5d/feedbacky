@@ -1,20 +1,16 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import Button from '../../common/components/button/Button'
-
-export interface IApplication {
-    id: number
-    name: string
-    status: string
-    feedback_count: number
-    created_at: string
-}
+import ApplicationService from '../../services/application.service'
+import { ApplicationProps } from './application/Application'
 
 const Applications = () => {
-    const [userApplications, setUserApplications] = useState<IApplication[]>([])
+    const [userApplications, setUserApplications] = useState<
+        ApplicationProps[]
+    >([])
 
     useEffect(() => {
-        // TODO: fetch user applications
-        setUserApplications([])
+        ApplicationService.fetchAll().then(setUserApplications)
     }, [])
 
     return (
@@ -24,8 +20,9 @@ const Applications = () => {
                     <h1 className="page__title">Applications</h1>
                     <div className="page__actions">
                         <Button
-                            url="/applications/new"
+                            url="/application/create"
                             text="Create Application"
+                            type="small"
                         />
                     </div>
                 </div>
@@ -36,7 +33,7 @@ const Applications = () => {
                                 <span>Name</span>
                             </div>
                             <div className="table__header-cell">
-                                <span>Status</span>
+                                <span>Key / Hash</span>
                             </div>
                             <div className="table__header-cell">
                                 <span>Feedbacks</span>
@@ -56,7 +53,11 @@ const Applications = () => {
                                     <span>{application.name}</span>
                                 </div>
                                 <div className="table__cell">
-                                    <span>{application.status}</span>
+                                    <span>
+                                        <code className="spoiler">
+                                            {application.hash}
+                                        </code>
+                                    </span>
                                 </div>
                                 <div className="table__cell">
                                     <span>{application.feedback_count}</span>
@@ -65,10 +66,11 @@ const Applications = () => {
                                     <span>{application.created_at}</span>
                                 </div>
                                 <div className="table__cell">
-                                    <Button
-                                        url={`/applications/${application.id}`}
-                                        text="View"
-                                    />
+                                    <Link
+                                        to={`/applications/${application.id}`}
+                                    >
+                                        View
+                                    </Link>
                                 </div>
                             </div>
                         ))}
