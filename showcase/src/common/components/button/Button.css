@@ -25,4 +25,31 @@
 .button:hover {
     background-color: #f6ca6c;
     color: #080f1a;
+    text-decoration: none;
 }
+
+.button--small {
+    font-size: 16px;
+    line-height: 24px;
+    min-height: 40px;
+    min-width: auto;
+    padding: 8px 24px;
+}
+
+.button--medium {
+    font-size: 20px;
+    line-height: 32px;
+    min-height: 52px;
+    padding: 10px 32px;
+}
+
+.button--danger {
+    background-color: #f0f0f0;
+    color: #222;
+}
+
+.button--danger:hover {
+    background-color: #C14146;
+    color: #fff;
+}
+
