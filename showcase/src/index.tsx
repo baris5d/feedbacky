@@ -14,6 +14,7 @@ import Application from './pages/applications/application/Application'
 import ApplicationEdit from './pages/applications/applicationEdit/ApplicationEdit'
 import ApplicationCreate from './pages/applications/applicationCreate/ApplicationCreate'
 import Feedback from './pages/feedback/Feedback'
+import PrivateRoute from './utils/PrivateRoute'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
@@ -31,21 +32,23 @@ root.render(
                     <Route path="/register" element={<Register />} />
                     <Route path="/login" element={<Login />} />
 
-                    <Route path="/applications" element={<Applications />} />
-                    <Route path="/applications/:id" element={<Application />} />
-                    <Route
-                        path="/application/create"
-                        element={<ApplicationCreate />}
-                    />
-                    <Route
-                        path="/applications/:id/edit"
-                        element={<ApplicationEdit />}
-                    />
+                    <Route path="/" element={<PrivateRoute />}>
+                        <Route path="/applications" element={<Applications />} />
+                        <Route path="/applications/:id" element={<Application />} />
+                        <Route
+                            path="/application/create"
+                            element={<ApplicationCreate />}
+                        />
+                        <Route
+                            path="/applications/:id/edit"
+                            element={<ApplicationEdit />}
+                        />
 
-                    <Route
-                        path="/applications/:application_id/feedbacks/:id"
-                        element={<Feedback />}
-                    />
+                        <Route
+                            path="/applications/:application_id/feedbacks/:id"
+                            element={<Feedback />}
+                        />
+                    </Route>
                 </Routes>
             </main>
         </BrowserRouter>
