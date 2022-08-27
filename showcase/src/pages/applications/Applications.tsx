@@ -36,9 +36,6 @@ const Applications = () => {
                                 <span>Key / Hash</span>
                             </div>
                             <div className="table__header-cell">
-                                <span>Feedbacks</span>
-                            </div>
-                            <div className="table__header-cell">
                                 <span>Created</span>
                             </div>
                             <div className="table__header-cell">
@@ -58,9 +55,6 @@ const Applications = () => {
                                             {application.hash}
                                         </code>
                                     </span>
-                                </div>
-                                <div className="table__cell">
-                                    <span>{application.feedback_count}</span>
                                 </div>
                                 <div className="table__cell">
                                     <span>{application.created_at}</span>

@@ -10,9 +10,9 @@ import Button from '../../../common/components/button/Button'
 export interface ApplicationProps {
     id: number
     name: string
-    feedback_count: number
     hash: string
     created_at: string
+    application_id: number
 }
 
 const Application = () => {
@@ -65,14 +65,6 @@ const Application = () => {
                                 <span>
                                     <code>{application?.hash}</code>
                                 </span>
-                            </div>
-                        </div>
-                        <div className="application__details-item">
-                            <div className="application__details-item-label">
-                                <span>Feedbacks</span>
-                            </div>
-                            <div className="application__details-item-value">
-                                <span>{application?.feedback_count}</span>
                             </div>
                         </div>
                         <div className="application__details-item">
@@ -137,9 +129,9 @@ const Application = () => {
 Application.defaultProps = {
     id: 0,
     name: '',
-    feedback_count: 0,
     hash: '',
     created_at: '',
+    application_id: 1,
 }
 
 export default Application
