@@ -43,6 +43,10 @@
     padding: 10px 32px;
 }
 
+.button--large {
+    width: 100%;
+}
+
 .button--danger {
     background-color: #f0f0f0;
     color: #222;

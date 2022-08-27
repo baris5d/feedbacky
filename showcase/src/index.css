@@ -23,6 +23,10 @@ code {
   color: #222;
 }
 
+label {
+  display: block;
+}
+
 code.spoiler {
   background-color: #222;
 }
@@ -106,12 +110,16 @@ a:hover {
   position: relative;
 }
 
+.form__group {
+  position: relative;
+  margin: 0 0 20px;
+}
+
 .form__input {
   width: 100%;
   padding: 10px 15px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  margin: 0 0 15px;
 }
 
 .form__input:focus {
@@ -126,6 +134,11 @@ a:hover {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.form__warning-message {
+  font-size:0.825rem;
+  margin-bottom: 10px;
 }
 
 .table {
