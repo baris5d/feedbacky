@@ -3,8 +3,13 @@ import FeedbackyModal from '../modal/FeedbackyModal'
 import FeedBackIcon from '../../feedback-icon.svg'
 import styles from './feedbacky.module.scss'
 
+import axios from 'axios'
+
+axios.defaults.baseURL = process.env.REACT_APP_API_URL
+axios.defaults.headers.post['Content-Type'] = 'application/json'
+
 export interface FeedbackyProps {
-    token?: string
+    hash: string
     primaryColor?: string
     secondaryColor?: string
     gradientColor?: string

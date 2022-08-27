@@ -4,12 +4,11 @@ import styles from './feedbackyModal.module.scss'
 import FeedbackyForm from '../form/FeedbackyForm'
 import FeedbackyMessage from '../message/FeedbackyMessage'
 import FeedbackySpinner from '../spinner/FeedbackySpinner'
+import axios from 'axios'
 
 export interface ModalTypes extends Omit<FeedbackyProps, ''> {
     toggle: () => void
 }
-
-const BASE_URL = 'http://0.0.0.0:5001/api/v1/applications/1/feedbacks'
 
 const FeedbackyModal = (props: ModalTypes) => {
     const [currentStatus, setCurrentStatus] = useState<
@@ -28,6 +27,7 @@ const FeedbackyModal = (props: ModalTypes) => {
         primaryColor,
         secondaryColor,
         successMessage,
+        hash,
     } = props
 
     useEffect(() => {
@@ -48,15 +48,8 @@ const FeedbackyModal = (props: ModalTypes) => {
     const handleSubmit = (message: string) => {
         setMessage(message)
         setCurrentStatus('loading')
-        fetch(BASE_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                content: message,
-            }),
-        })
+        axios
+            .post(`/feedbacks/${hash}`, { description: message })
             .then(() => {
                 setCurrentStatus('success')
                 setResponseMessage(successMessage)

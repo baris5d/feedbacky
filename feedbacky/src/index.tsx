@@ -8,7 +8,7 @@ import './feedbacky.scss'
 
 ReactDOM.render(
     <React.StrictMode>
-        <Feedbacky />
+        <Feedbacky hash="205a0fe6de354464928406e9c3437e05" />
     </React.StrictMode>,
     document.getElementById('root')
 )
