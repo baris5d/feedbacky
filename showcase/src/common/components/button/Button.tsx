@@ -8,6 +8,7 @@ interface ButtonProps {
     onClick?: () => void
     url?: string
     type?: 'small' | 'medium'
+    buttonType?: 'submit' | 'button'
 }
 
 const Button = (props: ButtonProps) => {
@@ -25,6 +26,7 @@ const Button = (props: ButtonProps) => {
             className={`button ${props.className ? props.className : ''}${
                 props.type ? ' button--' + props.type : ''
             }`}
+            type={props?.buttonType}
             onClick={props.onClick}
             disabled={props.disabled}
         >
