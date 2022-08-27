@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import FeedbackyModal from '../modal/FeedbackyModal'
 import FeedBackIcon from '../../feedback-icon.svg'
 import styles from './feedbacky.module.scss'
