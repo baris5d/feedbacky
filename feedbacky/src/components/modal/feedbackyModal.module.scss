@@ -76,7 +76,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             padding: 0 10px;
-            font-size: 18px;
+            font-size: 16px;
             resize: none;
             padding-top: 10px;
             font-family: 'Open Sans', sans-serif;
@@ -91,6 +91,14 @@
         }
     }
 
+    &__formDescription {
+        margin-top: 0;
+        width: 100%;
+        color: #222;
+        text-align: center;
+        font-weight: 500;
+    }
+
     &__submit {
         height: 40px;
         border: none;
@@ -99,8 +107,11 @@
         font-size: 16px;
         padding: 0 50px;
         cursor: pointer;
-        &:disabled {
-            background-color: rgba(75, 75, 103, 0.5);
+        transition: background-color 200ms ease-in-out;
+
+        &[disabled] {
+            background-color: rgba(75, 75, 103, 0.5) !important;
+            cursor: not-allowed;
         }
     }
 
@@ -118,5 +129,17 @@
     }
     .__danger {
         color: #ea0501;
+    }
+
+    &__label {
+        &--danger {
+            color: #ea0501;
+        }
+        &--warning {
+            color: #df7d59;
+        }
+        &--safe {
+            color: #333;
+        }
     }
 }

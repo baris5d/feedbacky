@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
-import { FeedbackyProps } from '../feedback/Feedbacky'
-import classNames from 'classnames'
+import { useEffect, useState } from 'react'
+import Feedbacky, { FeedbackyProps } from '../feedback/Feedbacky'
 import styles from './feedbackyModal.module.scss'
+import FeedbackyForm from '../form/FeedbackyForm'
+import FeedbackyMessage from '../message/FeedbackyMessage'
+import FeedbackySpinner from '../spinner/FeedbackySpinner'
 
 export interface ModalTypes extends Omit<FeedbackyProps, ''> {
     toggle: () => void
@@ -10,6 +12,13 @@ export interface ModalTypes extends Omit<FeedbackyProps, ''> {
 const BASE_URL = 'http://0.0.0.0:5001/api/v1/applications/1/feedbacks'
 
 const FeedbackyModal = (props: ModalTypes) => {
+    const [currentStatus, setCurrentStatus] = useState<
+        'idle' | 'success' | 'error' | 'loading'
+    >('idle')
+    const [responseMessage, setResponseMessage] = useState<string>()
+
+    const [message, setMessage] = useState<string>('')
+
     const {
         toggle,
         title,
@@ -18,41 +27,47 @@ const FeedbackyModal = (props: ModalTypes) => {
         zIndex,
         primaryColor,
         secondaryColor,
+        successMessage,
     } = props
-    const [message, setMessage] = useState('')
 
-    const submit = () => {
+    useEffect(() => {
+        const keyDownHandler = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                e.preventDefault()
+                toggle()
+            }
+        }
+
+        document.addEventListener('keydown', keyDownHandler)
+
+        return () => {
+            document.removeEventListener('keydown', keyDownHandler)
+        }
+    }, [])
+
+    const handleSubmit = (message: string) => {
+        setMessage(message)
+        setCurrentStatus('loading')
         fetch(BASE_URL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    content: message
-                }),
-                })
+            },
+            body: JSON.stringify({
+                content: message,
+            }),
+        })
             .then(() => {
-                setMessage('')
-                toggle()
-            }).catch(err => {
-                console.log(err)
+                setCurrentStatus('success')
+                setResponseMessage(successMessage)
             })
-    }
-
-    const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setMessage(e.target.value)
-    }
-
-    const messageLength = () => {
-        return message.length
-    }
-
-    const getClassName = (maxLength: number = 2000) => {
-        if (messageLength() === maxLength) {
-            return '--danger'
-        } else if (messageLength() > (maxLength / 5) * 4) {
-            return '--warning'
-        }
+            .catch((err) => {
+                console.error(err)
+                setCurrentStatus((_) => 'error')
+                setResponseMessage(
+                    'Something went wrong, please try again later'
+                )
+            })
     }
 
     const gradientBackground = () => {
@@ -73,42 +88,27 @@ const FeedbackyModal = (props: ModalTypes) => {
                 >
                     <h2>{title}</h2>
                 </div>
+                {currentStatus === 'error' && (
+                    <FeedbackyMessage message={responseMessage} type="error" />
+                )}
                 <div className={styles.modal__body}>
-                    <div
-                        className={classNames(
-                            styles.modal__formGroup,
-                            styles.__center
-                        )}
-                    >
-                        <span>{description}</span>
-                    </div>
-                    <div className={styles.modal__formGroup}>
-                        <textarea
-                            name="message"
-                            onChange={handleChange}
+                    {(currentStatus === 'idle' ||
+                        currentStatus === 'error') && (
+                        <FeedbackyForm
+                            message={message}
+                            description={description}
                             maxLength={maxLength}
-                        ></textarea>
-                        <label className={getClassName(maxLength)}>
-                            {messageLength()} / {maxLength}
-                        </label>
-                    </div>
-                    <div
-                        className={classNames(
-                            styles.modal__formGroup,
-                            styles.__right
-                        )}
-                    >
-                        <button
-                            className={classNames(styles.modal__submit)}
-                            style={{ backgroundColor: primaryColor }}
-                            onClick={() => {
-                                submit()
-                            }}
-                            disabled={messageLength() === 0}
-                        >
-                            Submit
-                        </button>
-                    </div>
+                            primaryColor={primaryColor}
+                            onSubmit={handleSubmit}
+                        />
+                    )}
+                    {currentStatus === 'loading' && <FeedbackySpinner />}
+                    {currentStatus === 'success' && (
+                        <FeedbackyMessage
+                            message={responseMessage}
+                            type={currentStatus}
+                        />
+                    )}
                 </div>
             </div>
         </div>
