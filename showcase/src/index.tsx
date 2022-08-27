@@ -15,6 +15,14 @@ import ApplicationEdit from './pages/applications/applicationEdit/ApplicationEdi
 import ApplicationCreate from './pages/applications/applicationCreate/ApplicationCreate'
 import Feedback from './pages/feedback/Feedback'
 import PrivateRoute from './utils/PrivateRoute'
+import axios from 'axios'
+import authHeader from './services/auth.header.service'
+import RestrictedRoute from './utils/RestrictedRoute'
+
+axios.defaults.baseURL = process.env.REACT_APP_API_URL
+axios.defaults.headers.common['Authorization'] =
+    authHeader().Authorization || ''
+axios.defaults.headers.post['Content-Type'] = 'application/json'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
@@ -29,12 +37,20 @@ root.render(
                         path="/getting-started"
                         element={<GettingStarted />}
                     />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/login" element={<Login />} />
+                    <Route path="/" element={<RestrictedRoute />}>
+                        <Route path="/register" element={<Register />} />
+                        <Route path="/login" element={<Login />} />
+                    </Route>
 
                     <Route path="/" element={<PrivateRoute />}>
-                        <Route path="/applications" element={<Applications />} />
-                        <Route path="/applications/:id" element={<Application />} />
+                        <Route
+                            path="/applications"
+                            element={<Applications />}
+                        />
+                        <Route
+                            path="/applications/:id"
+                            element={<Application />}
+                        />
                         <Route
                             path="/application/create"
                             element={<ApplicationCreate />}
