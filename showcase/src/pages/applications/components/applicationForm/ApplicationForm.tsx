@@ -38,30 +38,37 @@ const ApplicationForm = (props: ApplicationFormProps) => {
 
     return (
         <form className="form" id="application-form" onSubmit={handleSubmit}>
-            <input
-                className="form__input"
-                type="text"
-                placeholder="Application Name"
-                required
-                value={application?.name}
-                name="name"
-                onChange={handleChange}
-            />
+            <div className="form__group">
+                <input
+                    className="form__input"
+                    type="text"
+                    placeholder="Application Name"
+                    required
+                    value={application?.name}
+                    name="name"
+                    onChange={handleChange}
+                />
+            </div>
             <div className="form__actions">
                 {isEditing && props.onDelete && (
-                    <Button
-                        className="button--danger"
-                        type="small"
-                        text="Delete"
-                        onClick={() =>
-                            props.onDelete && props.onDelete(application)
-                        }
-                    ></Button>
+                    <div className="form__group">
+                        <Button
+                            className="button--danger"
+                            type="small"
+                            text="Delete"
+                            buttonType="button"
+                            onClick={() =>
+                                props.onDelete && props.onDelete(application)
+                            }
+                        ></Button>
+                    </div>
                 )}
-                <Button
-                    type="small"
-                    text={isEditing ? 'Update' : 'Create'}
-                ></Button>
+                <div className="form__group">
+                    <Button
+                        type="small"
+                        text={isEditing ? 'Update' : 'Create'}
+                    ></Button>
+                </div>
             </div>
         </form>
     )
