@@ -1,36 +1,44 @@
-import moment from 'moment';
-import Feedback, { FeedbackProps } from '../pages/feedback/Feedback';
+import moment from 'moment'
+import Feedback, { FeedbackProps } from '../pages/feedback/Feedback'
 import UAParser from 'ua-parser-js'
-
-export const BASE_URL = 'http://localhost:3001/api/v1'
+import axios from 'axios'
 
 export default class FeedbackService {
-    static fetchAll = async (application_id: number|string) => {
-        const response = await fetch(`${BASE_URL}/applications/${application_id}/feedbacks`)
-        return (await response.json()).map((application: any) => this.transform(application));
+    static fetchAll = async (application_id: number | string) => {
+        const response = await axios.get(
+            `/applications/${application_id}/feedbacks`
+        )
+        return ((await response.data) || { feedbacks: [] }).feedbacks.map(
+            (application: any) => this.transform(application)
+        )
     }
 
-    static fetch = async (application_id: number|string, id: number|string) : Promise<FeedbackProps> => {
+    static fetch = async (
+        application_id: number | string,
+        id: number | string
+    ): Promise<FeedbackProps> => {
         try {
-            const response = await fetch(`${BASE_URL}/applications/${application_id}/feedbacks/${id}`)
-            const data = await response.json()
+            const response = await axios.get(
+                `/applications/${application_id}/feedbacks/${id}`
+            )
+            const data = await response.data
             return this.transform(data)
         } catch (e) {
             return Feedback.defaultProps
         }
     }
 
-    static delete = async (application_id: number|string, id: number|string) : Promise<FeedbackProps> => {
-        const response = await fetch(`${BASE_URL}/applications/${application_id}/feedbacks/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        return await response.json()
+    static delete = async (
+        application_id: number | string,
+        id: number | string
+    ): Promise<FeedbackProps> => {
+        const response = await axios.delete(
+            `/applications/${application_id}/feedbacks/${id}`
+        )
+        return await response.data
     }
 
-    static transform = (data: FeedbackProps) : FeedbackProps => {
+    static transform = (data: FeedbackProps): FeedbackProps => {
         let userAgent = new UAParser(data.user_agent).getResult()
         return {
             id: data.id,
