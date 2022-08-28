@@ -1,0 +1,458 @@
+{
+	"info": {
+		"_postman_id": "72a4e7a8-76c3-49d8-94b7-9bf6a626cabd",
+		"name": "feedbacky-backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2680853"
+	},
+	"item": [
+		{
+			"name": "/register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"john@doe.com\",\n    \"password\": \"dummy\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/register",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Check access token is not empty",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Access Token was not empty\"] = jsonData.access_token !== undefined;",
+							"",
+							"// Set token as environment variable",
+							"postman.setEnvironmentVariable(\"jwt_token\", jsonData.access_token);",
+							"",
+							"// Set refresh token as environment variable",
+							"postman.setEnvironmentVariable(\"refresh_token\", jsonData.refresh_token);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"john@doe.com\",\n    \"password\": \"dummy\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Check access token is not empty",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Access Token was not empty\"] = jsonData.access_token !== undefined;",
+							"",
+							"// Set token as environment variable",
+							"postman.setEnvironmentVariable(\"jwt_token\", jsonData.access_token);",
+							"",
+							"// Set refresh token as environment variable",
+							"postman.setEnvironmentVariable(\"refresh_token\", jsonData.refresh_token);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/logout",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/refresh",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Check access token is not empty",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Access Token was not empty\"] = jsonData.access_token !== undefined;",
+							"",
+							"// Set token as environment variable",
+							"postman.setEnvironmentVariable(\"jwt_token\", jsonData.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{refresh_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/refresh",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"refresh"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/applications/<int:id>",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/applications/<int:id>",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"applications",
+						"<int:id>"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/applications/<int:id>",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/applications/<int:id>",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"applications",
+						"<int:id>"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/applications/<int:id>",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/applications/<int:id>",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"applications",
+						"<int:id>"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/applications",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/applications",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"applications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/applications/check/<string:hash>",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/applications/check/<string:hash>",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"applications",
+						"check",
+						"<string:hash>"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/applications/<int:application_id>/feedbacks/<int:feedback_id>",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/applications/check/<string:hash>/applications/<int:application_id>/feedbacks/<int:feedback_id>",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"applications",
+						"check",
+						"<string:hash>",
+						"applications",
+						"<int:application_id>",
+						"feedbacks",
+						"<int:feedback_id>"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/applications/<int:application_id>/feedbacks/<int:feedback_id>",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/applications/<int:application_id>/feedbacksdbacks/<int:feedback_id>",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"applications",
+						"<int:application_id>",
+						"feedbacksdbacks",
+						"<int:feedback_id>"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/feedbacks/<string:application_hash>",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"this is an example description\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/feedbacks/<string:application_hash>",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"feedbacks",
+						"<string:application_hash>"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
