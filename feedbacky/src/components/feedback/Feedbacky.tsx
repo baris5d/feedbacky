@@ -1,11 +1,12 @@
 import { useState } from 'react'
+import * as React from 'react'
 import FeedbackyModal from '../modal/FeedbackyModal'
 import FeedBackIcon from '../../feedback-icon.svg'
 import styles from './feedbacky.module.scss'
 
 import axios from 'axios'
 
-axios.defaults.baseURL = process.env.REACT_APP_API_URL
+axios.defaults.baseURL = ''
 axios.defaults.headers.post['Content-Type'] = 'application/json'
 
 export interface FeedbackyProps {
@@ -20,7 +21,7 @@ export interface FeedbackyProps {
     zIndex?: string
 }
 
-const Feedbacky = (props: FeedbackyProps): JSX.Element => {
+export const Feedbacky = (props: FeedbackyProps): JSX.Element => {
     const { zIndex } = props
     const [isToggle, setIsToggle] = useState(false)
 
@@ -29,13 +30,13 @@ const Feedbacky = (props: FeedbackyProps): JSX.Element => {
     }
 
     return (
-        <>
+        <div>
             <button
                 className={styles.button}
                 style={{ zIndex }}
                 onClick={toggle}
             >
-                <img src={FeedBackIcon} alt="Feedback" />
+                <img src={FeedBackIcon} alt='Feedback' />
             </button>
             {isToggle && (
                 <FeedbackyModal
@@ -45,7 +46,7 @@ const Feedbacky = (props: FeedbackyProps): JSX.Element => {
                     {...props}
                 />
             )}
-        </>
+        </div>
     )
 }
 
@@ -56,7 +57,5 @@ Feedbacky.defaultProps = {
     title: 'Feedback',
     description: 'Share your thoughts with us',
     successMessage: 'Thanks for your feedback',
-    zIndex: 99999,
+    zIndex: 99999
 }
-
-export default Feedbacky
