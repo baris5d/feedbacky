@@ -1,0 +1,16 @@
+{
+    "name": "feedbacky-app",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "install": "cd ./feedbacky && npm i && cd ../showcase && npm i && cd ..",
+        "start": "cd ./feedbacky && npm run build && cd ./example && npm run start",
+        "start:showcase": "npm run build:all && npx http-server ./showcase/build/",
+        "build:lib": "cd ./feedbacky && npm run build:cdn && mv ./build/feedbacky.js ../showcase/public/feedbacky.js && mv ./build/feedbacky.css ../showcase/public/feedbacky.css && cd ..",
+        "build:app": "cd ./showcase && npm run build && cd ..",
+        "build:all": "npm run build:lib && npm run build:app"
+    },
+    "author": "",
+    "license": "ISC"
+}
