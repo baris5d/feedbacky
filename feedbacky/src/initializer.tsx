@@ -1,16 +1,27 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom'
-import { Feedbacky } from './components/feedback/Feedbacky'
+import { Feedbacky, FeedbackyProps } from './components/feedback/Feedbacky'
 
-export const getFeedbacky = (props: any) => {
-    return <Feedbacky {...props} />
+export const initFeedbacky = (props: FeedbackyProps) => {
+    try {
+        ReactDOM.render(
+            <React.StrictMode>
+                <Suspense
+                    fallback={
+                        <script>console.error("Feedbacky has an error")</script>
+                    }
+                >
+                    <Feedbacky {...props} />
+                </Suspense>
+            </React.StrictMode>,
+            document.getElementById(props.id || 'feedbacky')
+        )
+    } catch (error) {
+        console.error(error)
+    }
 }
 
-export const initFeedbacky = (props: any) => {
-    ReactDOM.render(
-        <React.StrictMode>
-            <Feedbacky {...props} />
-        </React.StrictMode>,
-        document.getElementById('feedbacky')
-    )
+if (window) {
+    // @ts-ignore
+    window.initFeedbacky = initFeedbacky
 }
