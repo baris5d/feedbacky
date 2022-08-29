@@ -39,7 +39,7 @@ const FeedbackyForm = (props: FormTypes) => {
   }
 
   return (
-    <div>
+    <React.Fragment>
       <div className={classNames(styles.modal__formGroup, styles.__center)}>
         <p className={styles.modal__formDescription}>{description}</p>
       </div>
@@ -69,7 +69,7 @@ const FeedbackyForm = (props: FormTypes) => {
           Submit
         </button>
       </div>
-    </div>
+    </React.Fragment>
   )
 }
 

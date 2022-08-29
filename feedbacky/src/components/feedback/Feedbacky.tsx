@@ -10,27 +10,31 @@ axios.defaults.baseURL = ''
 axios.defaults.headers.post['Content-Type'] = 'application/json'
 
 export interface FeedbackyProps {
-    hash: string
+    token: string
     primaryColor?: string
     secondaryColor?: string
-    gradientColor?: string
     maxLength?: number
     title?: string
     description?: string
     successMessage?: string
     zIndex?: string
+    baseURL?: string
 }
 
 export const Feedbacky = (props: FeedbackyProps): JSX.Element => {
     const { zIndex } = props
     const [isToggle, setIsToggle] = useState(false)
 
+    axios.defaults.baseURL = props.baseURL
+        ? props.baseURL
+        : axios.defaults.baseURL
+
     const toggle = () => {
         setIsToggle(!isToggle)
     }
 
     return (
-        <div>
+        <React.Fragment>
             <button
                 className={styles.button}
                 style={{ zIndex }}
@@ -46,7 +50,7 @@ export const Feedbacky = (props: FeedbackyProps): JSX.Element => {
                     {...props}
                 />
             )}
-        </div>
+        </React.Fragment>
     )
 }
 
