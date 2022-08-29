@@ -4,6 +4,7 @@ import Slogan from './components/slogan/Slogan'
 import Showcase from './components/showcase/Showcase'
 import './Landing.css'
 import { initFeedbacky } from 'feedbacky'
+import 'feedbacky/dist/index.css'
 
 function Landing() {
     React.useEffect(() => {
