@@ -49,7 +49,7 @@ export default class ApplicationService {
         return {
             id: data.id,
             name: data.name,
-            hash: data.hash,
+            token: data.token,
             created_at: moment(data.created_at).format('LLL'),
             application_id: 1,
         }

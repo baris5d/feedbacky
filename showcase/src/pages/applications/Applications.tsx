@@ -33,7 +33,7 @@ const Applications = () => {
                                 <span>Name</span>
                             </div>
                             <div className="table__header-cell">
-                                <span>Key / Hash</span>
+                                <span>Token</span>
                             </div>
                             <div className="table__header-cell">
                                 <span>Created</span>
@@ -52,7 +52,7 @@ const Applications = () => {
                                 <div className="table__cell">
                                     <span>
                                         <code className="spoiler">
-                                            {application.hash}
+                                            {application.token}
                                         </code>
                                     </span>
                                 </div>

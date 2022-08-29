@@ -10,7 +10,7 @@ import Button from '../../../common/components/button/Button'
 export interface ApplicationProps {
     id: number
     name: string
-    hash: string
+    token: string
     created_at: string
     application_id: number
 }
@@ -59,11 +59,11 @@ const Application = () => {
                         </div>
                         <div className="application__details-item">
                             <div className="application__details-item-label">
-                                <span>Key (Hash)</span>
+                                <span>Token</span>
                             </div>
                             <div className="application__details-item-value">
                                 <span>
-                                    <code>{application?.hash}</code>
+                                    <code>{application?.token}</code>
                                 </span>
                             </div>
                         </div>
@@ -129,7 +129,7 @@ const Application = () => {
 Application.defaultProps = {
     id: 0,
     name: '',
-    hash: '',
+    token: '',
     created_at: '',
     application_id: 1,
 }
