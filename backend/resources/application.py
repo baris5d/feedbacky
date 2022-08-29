@@ -83,8 +83,8 @@ class ApplicationList(Resource):
 
 class ApplicationFind(Resource):
     @classmethod
-    def get(cls, hash):
-        application = ApplicationModel.find_by_hash(hash)
+    def get(cls, token):
+        application = ApplicationModel.find_by_token(token)
         if application:
             return {'message': 'Application found!'}, 200
         return {'message': 'Application not found'}, 404

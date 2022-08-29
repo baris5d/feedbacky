@@ -10,7 +10,7 @@ class ApplicationModel(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     name = db.Column(db.String(80), nullable=False)
-    hash = db.Column(db.String(80), nullable=False)
+    token = db.Column(db.String(80), nullable=False)
 
 
     user = db.relationship('UserModel')
@@ -18,7 +18,7 @@ class ApplicationModel(db.Model):
     def __init__(self, user_id, name) -> None:
         self.user_id: str = user_id
         self.name: str = name
-        self.hash: str = self.generate_hash()
+        self.token: str = self.generate_hash()
 
     def __repr__(self):
         return '<Application %r>' % self.id
@@ -49,8 +49,8 @@ class ApplicationModel(db.Model):
         return cls.query.filter_by(user_id=user_id).all()
 
     @classmethod
-    def find_by_hash(cls, hash):
-        return cls.query.filter_by(hash=hash).first()
+    def find_by_token(cls, token):
+        return cls.query.filter_by(token=token).first()
 
     def generate_hash(cls):
         return uuid.uuid4().hex
@@ -60,5 +60,5 @@ class ApplicationModel(db.Model):
             "id": self.id,
             "user_id": self.user_id,
             "name": self.name,
-            "hash": self.hash
+            "token": self.token
         }
