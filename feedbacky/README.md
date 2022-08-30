@@ -42,13 +42,13 @@ If you want to get benefit from Feedbacky component as a service,  you can follo
 Feedbacky is an open source project, you can serve your own backend service in your own servers. If you want to use your own endpoints, you may find the installation guide [here]( "").
 
 ##### Create an account
-![](assets/Screen%20Shot%202022-08-29%20at%208.11.41%20AM.png)
+![](../case-description/assets/create-account.png)
 ##### Create your Application
 In My Applications Page, you can create your first application that you want to use Feedbacky.
-![](assets/Screen%20Shot%202022-08-29%20at%208.12.25%20AM.png)
+![](../case-description/assets/create-appliication.png)
 ##### Copy your token
 Once you create your application,  you may find yor application’s token from _detail_ page or in my _applications_ list. 
-![](assets/Screen%20Shot%202022-08-29%20at%208.19.43%20AM.png)
+![](../case-description/assets/copy-token.png)
 
 ### 🥁 Usage
 
@@ -102,4 +102,4 @@ ReactDOM.render(
 | zIndex         | Z-index value used by icon and modal<br>default: 99999       | number | yes      |
 
 ### Licence
-MIT
+[MIT](../LICENCE)
