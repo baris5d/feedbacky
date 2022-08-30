@@ -70,7 +70,11 @@ const FeedbackyModal = (props: ModalTypes) => {
     }
 
     return (
-        <div className={styles.modal} style={{ zIndex }}>
+        <div
+            data-testid='feedbacky-modal'
+            className={styles.modal}
+            style={{ zIndex }}
+        >
             <div className={styles.modal__content}>
                 <span className={styles.modal__closeButton} onClick={toggle}>
                     &times;
@@ -79,7 +83,7 @@ const FeedbackyModal = (props: ModalTypes) => {
                     className={styles.modal__header}
                     style={gradientBackground()}
                 >
-                    <h2>{title}</h2>
+                    <h2 data-testid='feedbacky-modal-title'>{title}</h2>
                 </div>
                 {currentStatus === 'error' && (
                     <FeedbackyMessage message={responseMessage} type='error' />
@@ -88,6 +92,7 @@ const FeedbackyModal = (props: ModalTypes) => {
                     {(currentStatus === 'idle' ||
                         currentStatus === 'error') && (
                         <FeedbackyForm
+                            data-testid='feedbacky-modal-form'
                             message={message}
                             description={description}
                             maxLength={maxLength}
