@@ -41,17 +41,18 @@ const FeedbackyForm = (props: FormTypes) => {
   return (
     <React.Fragment>
       <div className={classNames(styles.modal__formGroup, styles.__center)}>
-        <p className={styles.modal__formDescription}>{description}</p>
+        <p className={styles.modal__formDescription} data-textid="feedbacky-description">{description}</p>
       </div>
       <div className={styles.modal__formGroup}>
         <textarea
+          data-testid="feedbacky-form-textarea"
           name='message'
           onChange={handleChange}
           maxLength={maxLength}
           spellCheck={false}
           value={_message}
         ></textarea>
-        <label className={styles[getClassName(maxLength)]}>
+        <label data-testid="maxlength-label" className={styles[getClassName(maxLength)]}>
           {messageLength()} / {maxLength}
         </label>
       </div>
@@ -59,6 +60,7 @@ const FeedbackyForm = (props: FormTypes) => {
         <button
           className={classNames(styles.modal__submit)}
           style={{ backgroundColor: primaryColor }}
+          data-testid="feedbacky-form-button"
           onClick={() => {
             if (onSubmit) {
               onSubmit(_message)
