@@ -3,7 +3,6 @@
 Getting feedback is great, but it's even better when it's combined with Feedbacky.
 Feedbacky is a simple package that fastens your communication between your customers. Designed for you to implement, customize and publish easily.
 
->NOTE:  Since it’s not allowed to publish this project in public, I just published an example usage on [GitHub Pages](https://baris5d.github.io/feedbacky "").
 ## Getting Started
 ### 🔨 Installation
 To get started with Feedbacky, you can simply install it via npm. 
